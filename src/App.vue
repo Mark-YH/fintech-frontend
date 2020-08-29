@@ -7,7 +7,6 @@
     />
     <NavBar/>
     <Main/>
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <HelloWorld msg="We23 Vue.js App"/> -->
     <Footer/>
   </div>

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import { BootstrapVue, IconsPlugin, LayoutPlugin, NavbarPlugin } from 'bootstrap-vue'
+import {BootstrapVue, IconsPlugin, LayoutPlugin, NavbarPlugin} from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import vueHeadful from 'vue-headful';
@@ -12,9 +12,9 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue components plugin
 Vue.use(IconsPlugin)
 Vue.use(LayoutPlugin)
-Vue.use(NavbarPlugin )
+Vue.use(NavbarPlugin)
 Vue.component('vue-headful', vueHeadful);
 
 new Vue({
-  render: h => h(App),
+    render: h => h(App),
 }).$mount('#app')

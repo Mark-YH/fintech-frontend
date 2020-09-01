@@ -1,19 +1,13 @@
 <template>
   <div id="app">
-    <vue-headful
-            title="Lab 114 Fintech"
-            description="Fintech"
-            keywords="Fintech, QTS, Portfolio optimization"
-    />
+    <vue-headful title="Lab 114 Fintech"/>
     <NavBar/>
     <Main/>
-    <!-- <HelloWorld msg="We23 Vue.js App"/> -->
     <Footer/>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
 import NavBar from './components/NavBar.vue'
 import Footer from './components/Footer.vue'
 import Main from './components/Main.vue'
@@ -21,7 +15,6 @@ import Main from './components/Main.vue'
 export default {
   name: 'App',
   components: {
-    // HelloWorld,
     NavBar,
     Footer,
     Main,

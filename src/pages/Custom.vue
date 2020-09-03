@@ -1,27 +1,30 @@
 <template>
-  <b-container fluid="lg">
-    <div>
-      <b-row align-h="center">
-        <b-col md="5" class="mt-2 row" align-self="center">
-          <ParamForm/>
-        </b-col>
-        <b-col md="7">
-          <StockChart/>
-        </b-col>
-      </b-row>
-    </div>
+  <b-container fluid="auto">
+    <b-row align-h="center" class="mt-2">
+      <b-col md="4">
+        <MAParamForm/>
+      </b-col>
+      <b-col md="2">
+        <StrategyResult/>
+      </b-col>
+      <b-col md="6">
+        <StockChart/>
+      </b-col>
+    </b-row>
   </b-container>
 </template>
 
 <script>
-import ParamForm from "@/components/ParamForm/MAParamForm";
+import MAParamForm from "@/components/ParamForm/MAParamForm";
 import StockChart from "@/components/StockChart";
+import StrategyResult from "@/components/StrategyResult";
 
 export default {
   name: 'Custom',
   components: {
-    ParamForm,
+    MAParamForm,
     StockChart,
+    StrategyResult
   }
 }
 </script>

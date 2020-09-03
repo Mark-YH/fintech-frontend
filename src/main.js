@@ -6,10 +6,11 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import vueHeadful from 'vue-headful'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
-import Custom from "@/pages/Custom";
-import Intro from "@/pages/Intro";
-import Index from "@/pages/Index";
-import Recommendation from "@/pages/Recommendation";
+import Custom from "@/pages/Custom"
+import Intro from "@/pages/Intro"
+import Index from "@/pages/Index"
+import Recommendation from "@/pages/Recommendation"
+import store from './store'
 
 Vue.config.productionTip = false
 
@@ -54,5 +55,6 @@ const router = new VueRouter({
 
 new Vue({
     router,
+    store,
     render: h => h(App),
 }).$mount('#app')

@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import {mapActions} from 'vuex'
 
 export default {
   name: "RecommendForm",
@@ -90,9 +90,12 @@ export default {
     })
   },
   methods: {
+    ...mapActions([
+      'actionRecommendMA'
+    ]),
     onSubmit(evt) {
       evt.preventDefault()
-      this.runQTS()
+      this.actionRecommendMA(this.form)
     }
     ,
     onReset(evt) {
@@ -105,21 +108,6 @@ export default {
       this.$nextTick(() => {
         this.show = true
       })
-    },
-    runQTS() {
-      // const url = 'http://127.0.0.1:8000/api/recommend/'
-      const url = 'https://fintech-114.herokuapp.com/api/recommend/'
-
-      axios({
-        url: url,
-        method: 'post',
-        responseType: 'json',
-        data: JSON.stringify(this.form),
-      })
-          .then(function (response) {
-            console.log("response status = " + response)
-            console.log("response data = " + response.data)
-          })
     }
   }
 }

@@ -1,116 +1,114 @@
 <template>
-  <b-container fluid="lg">
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show" id="MA-param-form">
-      <b-form-row class="mb-2">
-        <b-col cols="12">
-          自訂買入訊號
-        </b-col>
-      </b-form-row>
-      <b-form-row>
-        <b-col cols="6">
-          <b-form-input
-              id="input-buy1"
-              v-model="form.buy1"
-              placeholder="買1"
-              type="number"
-              min="1"
-              max="256"
-              class="mb-2"
-              :state="buy1State"
-              aria-describedby="input-live-feedback"
-              required></b-form-input>
-          <b-form-invalid-feedback id="input-live-feedback"> MA 交易策略須介於 0 ~ 256</b-form-invalid-feedback>
-        </b-col>
-        <b-col cols="6">
-          <b-form-input
-              id="input-buy2"
-              v-model="form.buy2"
-              placeholder="買2"
-              type="number"
-              min="1"
-              max="256"
-              class="mb-2"
-              :state="buy2State"
-              aria-describedby="input-live-feedback"
-              required></b-form-input>
-          <b-form-invalid-feedback id="input-live-feedback"> MA 交易策略須介於 0 ~ 256</b-form-invalid-feedback>
-        </b-col>
-      </b-form-row>
-      <b-form-row class="mb-2">
-        <b-col cols="12">
-          自訂賣出訊號
-        </b-col>
-      </b-form-row>
-      <b-form-row>
-        <b-col cols="6">
-          <b-form-input
-              id="input-sell1"
-              v-model="form.sell1"
-              placeholder="賣1"
-              type="number"
-              min="1"
-              max="256"
-              class="mb-2"
-              :state="sell1State"
-              aria-describedby="input-live-feedback"
-              required></b-form-input>
-          <b-form-invalid-feedback id="input-live-feedback"> MA 交易策略須介於 0 ~ 256</b-form-invalid-feedback>
-        </b-col>
-        <b-col cols="6">
-          <b-form-input
-              id="input-sell2"
-              v-model="form.sell2"
-              placeholder="賣2"
-              type="number"
-              min="1"
-              max="256"
-              class="mb-2"
-              :state="sell2State"
-              aria-describedby="input-live-feedback"
-              required></b-form-input>
-          <b-form-invalid-feedback id="input-live-feedback"> MA 交易策略須介於 0 ~ 256</b-form-invalid-feedback>
-        </b-col>
-      </b-form-row>
-      <b-form-row class="mb-2">
-        <b-col cols="6">
-          訓練起始日期
-        </b-col>
-        <b-col cols="6">
-          訓練截止日期
-        </b-col>
-      </b-form-row>
-      <b-form-row>
-        <b-col cols="6">
-          <b-form-datepicker
-              id="training_start"
-              v-model="form.start"
-              class="mb-2"
-              :state="date1State"
-              required></b-form-datepicker>
-        </b-col>
-        <b-col cols="6">
-          <b-form-datepicker
-              id="training_end"
-              v-model="form.end"
-              class="mb-2"
-              :state="date2State"
-              required></b-form-datepicker>
-        </b-col>
-      </b-form-row>
-      <b-form-row>
-        <b-col cols="6">
-          <b-button class="mb-2" type="submit" variant="primary">Submit</b-button>
-        </b-col>
-        <b-col cols="6">
-          <b-button class="mb-2" type="reset" variant="danger">Reset</b-button>
-        </b-col>
-      </b-form-row>
-    </b-form>
-  </b-container>
+  <b-form @submit="onSubmit" @reset="onReset" v-if="show" id="MA-param-form">
+    <b-form-row class="mb-2">
+      <b-col cols="12">
+        自訂買入訊號
+      </b-col>
+    </b-form-row>
+    <b-form-row>
+      <b-col cols="6">
+        <b-form-input
+            id="input-buy1"
+            v-model="form.buy1"
+            placeholder="買1"
+            type="number"
+            min="1"
+            max="256"
+            class="mb-2"
+            :state="buy1State"
+            aria-describedby="input-live-feedback"
+            required></b-form-input>
+        <b-form-invalid-feedback id="input-live-feedback"> MA 交易策略須介於 0 ~ 256</b-form-invalid-feedback>
+      </b-col>
+      <b-col cols="6">
+        <b-form-input
+            id="input-buy2"
+            v-model="form.buy2"
+            placeholder="買2"
+            type="number"
+            min="1"
+            max="256"
+            class="mb-2"
+            :state="buy2State"
+            aria-describedby="input-live-feedback"
+            required></b-form-input>
+        <b-form-invalid-feedback id="input-live-feedback"> MA 交易策略須介於 0 ~ 256</b-form-invalid-feedback>
+      </b-col>
+    </b-form-row>
+    <b-form-row class="mb-2">
+      <b-col cols="12">
+        自訂賣出訊號
+      </b-col>
+    </b-form-row>
+    <b-form-row>
+      <b-col cols="6">
+        <b-form-input
+            id="input-sell1"
+            v-model="form.sell1"
+            placeholder="賣1"
+            type="number"
+            min="1"
+            max="256"
+            class="mb-2"
+            :state="sell1State"
+            aria-describedby="input-live-feedback"
+            required></b-form-input>
+        <b-form-invalid-feedback id="input-live-feedback"> MA 交易策略須介於 0 ~ 256</b-form-invalid-feedback>
+      </b-col>
+      <b-col cols="6">
+        <b-form-input
+            id="input-sell2"
+            v-model="form.sell2"
+            placeholder="賣2"
+            type="number"
+            min="1"
+            max="256"
+            class="mb-2"
+            :state="sell2State"
+            aria-describedby="input-live-feedback"
+            required></b-form-input>
+        <b-form-invalid-feedback id="input-live-feedback"> MA 交易策略須介於 0 ~ 256</b-form-invalid-feedback>
+      </b-col>
+    </b-form-row>
+    <b-form-row class="mb-2">
+      <b-col cols="6">
+        訓練起始日期
+      </b-col>
+      <b-col cols="6">
+        訓練截止日期
+      </b-col>
+    </b-form-row>
+    <b-form-row>
+      <b-col cols="6">
+        <b-form-datepicker
+            id="training_start"
+            v-model="form.start"
+            class="mb-2"
+            :state="date1State"
+            required></b-form-datepicker>
+      </b-col>
+      <b-col cols="6">
+        <b-form-datepicker
+            id="training_end"
+            v-model="form.end"
+            class="mb-2"
+            :state="date2State"
+            required></b-form-datepicker>
+      </b-col>
+    </b-form-row>
+    <b-form-row>
+      <b-col cols="6">
+        <b-button class="mb-2" type="submit" variant="primary">Submit</b-button>
+      </b-col>
+      <b-col cols="6">
+        <b-button class="mb-2" type="reset" variant="danger">Reset</b-button>
+      </b-col>
+    </b-form-row>
+  </b-form>
 </template>
 
 <script>
-import axios from "axios";
+import {mapActions} from 'vuex'
 
 export default {
   name: "ParamForm",
@@ -190,11 +188,13 @@ export default {
     })
   },
   methods: {
+    ...mapActions([
+      'actionCustomMA'
+    ]),
     onSubmit(evt) {
       evt.preventDefault()
-      this.runQTS()
-    }
-    ,
+      this.actionCustomMA(this.form)
+    },
     onReset(evt) {
       evt.preventDefault()
       // Reset our form values
@@ -209,21 +209,6 @@ export default {
       this.$nextTick(() => {
         this.show = true
       })
-    },
-    runQTS() {
-      // const url = 'http://127.0.0.1:8000/api/ma/custom/'
-      const url = 'https://fintech-114.herokuapp.com/api/ma/custom/'
-
-      axios({
-        url: url,
-        method: 'post',
-        responseType: 'json',
-        data: JSON.stringify(this.form),
-      })
-          .then(function (response) {
-            console.log("response status = " + response)
-            console.log("response data = " + response.data)
-          })
     }
   }
 }

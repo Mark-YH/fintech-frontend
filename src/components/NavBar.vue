@@ -10,10 +10,9 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="/">Home</b-nav-item>
-          <b-nav-item href="/intro">Intro</b-nav-item>
-          <b-nav-item href="/recommendation">AI Recommendation</b-nav-item>
-          <b-nav-item href="/custom">Customize Indicators</b-nav-item>
+          <b-nav-item href="/intro">技術指標介紹</b-nav-item>
+          <b-nav-item href="/recommendation">智慧推薦</b-nav-item>
+          <b-nav-item href="/custom">自訂技術指標</b-nav-item>
           <b-nav-item href="https://fintech-114.herokuapp.com/api/test">API Test</b-nav-item>
           <b-nav-item href="https://fintech-114.herokuapp.com/admin">DB Admin</b-nav-item>
           <b-nav-item-dropdown text="Dropdown...">

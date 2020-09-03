@@ -1,6 +1,6 @@
 <template>
   <b-container fluid="lg">
-    <div class="row justify-content-center align-items-center">
+    <div>
       <b-row align-h="center">
         <b-col md="5" class="mt-2 row" align-self="center">
           <ParamForm/>

@@ -56,6 +56,7 @@ async function chartIt() {
 }
 
 async function getData() {
+  // const url = 'http://127.0.0.1:8000/api/recommend/'
   const url = 'https://fintech-114.herokuapp.com/api/recommend/'
 
   await axios({

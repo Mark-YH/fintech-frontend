@@ -1,6 +1,11 @@
 <template>
   <b-container fluid="lg">
     <b-form @submit="onSubmit" @reset="onReset" v-if="show" id="MA-param-form">
+      <b-form-row class="mb-2">
+        <b-col cols="12">
+          自訂買入訊號
+        </b-col>
+      </b-form-row>
       <b-form-row>
         <b-col cols="6">
           <b-form-input
@@ -31,6 +36,11 @@
           <b-form-invalid-feedback id="input-live-feedback"> MA 交易策略須介於 0 ~ 256</b-form-invalid-feedback>
         </b-col>
       </b-form-row>
+      <b-form-row class="mb-2">
+        <b-col cols="12">
+          自訂賣出訊號
+        </b-col>
+      </b-form-row>
       <b-form-row>
         <b-col cols="6">
           <b-form-input
@@ -59,6 +69,14 @@
               aria-describedby="input-live-feedback"
               required></b-form-input>
           <b-form-invalid-feedback id="input-live-feedback"> MA 交易策略須介於 0 ~ 256</b-form-invalid-feedback>
+        </b-col>
+      </b-form-row>
+      <b-form-row class="mb-2">
+        <b-col cols="6">
+          訓練起始日期
+        </b-col>
+        <b-col cols="6">
+          訓練截止日期
         </b-col>
       </b-form-row>
       <b-form-row>

@@ -20,7 +20,7 @@ export const actionCustomMA = ({commit}, form) => {
 
 export const actionRecommendMA = ({commit}, form) => {
     // const url = 'http://127.0.0.1:8000/api/ma/recommend/'
-    const url = 'https://fintech-114.herokuapp.com/api/recommend/'
+    const url = 'https://fintech-114.herokuapp.com/api/ma/recommend/'
 
     axios({
         url: url,

@@ -3,18 +3,56 @@ import App from './App.vue'
 import {BootstrapVue, IconsPlugin, LayoutPlugin, NavbarPlugin} from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import vueHeadful from 'vue-headful';
+import vueHeadful from 'vue-headful'
+import Vuex from 'vuex'
+import VueRouter from 'vue-router'
+import Custom from "@/pages/Custom";
+import Intro from "@/pages/Intro";
+import Index from "@/pages/Index";
+import Recommendation from "@/pages/Recommendation";
 
 Vue.config.productionTip = false
 
-// Install BootstrapVue
 Vue.use(BootstrapVue)
-// Optionally install the BootstrapVue components plugin
 Vue.use(IconsPlugin)
 Vue.use(LayoutPlugin)
 Vue.use(NavbarPlugin)
+Vue.use(Vuex)
+Vue.use(VueRouter)
+
 Vue.component('vue-headful', vueHeadful);
 
+const router = new VueRouter({
+    mode: 'history',
+    base: __dirname,
+
+    routes: [
+        {
+            path: '/',
+            name: 'Index',
+            component: Index
+        },
+        {
+            path: '/intro',
+            name: 'Intro',
+            component: Intro
+        },
+        {
+            path: '/recommendation',
+            name: 'Recommendation',
+            component: Recommendation
+        },
+        {
+            path: '/custom',
+            name: 'Custom',
+            component: Custom
+        },
+        // router 轉址
+        {path: '/*', redirect: '/'}
+    ]
+});
+
 new Vue({
+    router,
     render: h => h(App),
 }).$mount('#app')

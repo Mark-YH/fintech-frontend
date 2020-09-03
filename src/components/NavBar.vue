@@ -1,6 +1,6 @@
 <template>
   <header>
-    <b-navbar toggleable="lg" type="dark" variant="dark">
+    <b-navbar toggleable="md" type="dark" variant="dark">
       <b-navbar-brand href="/">
         <img alt="Fat cat logo" src="../assets/logo.svg">
         FinTech
@@ -11,6 +11,9 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item href="/">Home</b-nav-item>
+          <b-nav-item href="/intro">Intro</b-nav-item>
+          <b-nav-item href="/recommendation">AI Recommendation</b-nav-item>
+          <b-nav-item href="/custom">Customize Indicators</b-nav-item>
           <b-nav-item href="https://fintech-114.herokuapp.com/api/test">API Test</b-nav-item>
           <b-nav-item href="https://fintech-114.herokuapp.com/admin">DB Admin</b-nav-item>
           <b-nav-item-dropdown text="Dropdown...">

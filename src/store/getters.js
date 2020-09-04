@@ -13,3 +13,7 @@ export const getHoldingPeriod = state => {
 export const getStockPrice = state => {
     return state.stock_price
 }
+
+export const getChartLoading = state => {
+    return state.chartLoading
+}

@@ -34,3 +34,7 @@ export const actionRecommendMA = ({commit}, form) => {
             commit(types.UPDATE, response.data)
         })
 }
+
+export const actionChartLoading = ({commit}, isLoading) => {
+    commit(types.CHART_LOADING, isLoading)
+}

@@ -1,81 +1,112 @@
 <template>
-  <canvas id="myChart"></canvas>
+  <v-chart :options="chartOption" ref="myChart" :autoresize="true"></v-chart>
 </template>
 
 <script>
-import Chart from "chart.js";
-import {mapGetters} from "vuex";
+import ECharts from 'vue-echarts'
+import {mapGetters, mapActions} from "vuex";
+import 'echarts/lib/chart/line'
 
 export default {
   name: "StockChart",
-  props: {},
+  components: {
+    'v-chart': ECharts
+  },
   computed: {
     ...mapGetters({
       stockPrice: 'getStockPrice',
       holdingPeriod: 'getHoldingPeriod',
-      profit: 'getProfit'
+      profit: 'getProfit',
+      isChartLoading: 'getChartLoading'
     }),
     hp_update() {
       return this.holdingPeriod
-    }
-  },
-  watch: {
-    hp_update: function () {
-      this.chartIt()
+    },
+    chart_loading_state() {
+      return this.isChartLoading
     }
   },
   methods: {
-    chartIt() {
-      const ctx = 'myChart';
-      const myChart = new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
-          datasets: [
-            {
-              label: "AAPL",
-              backgroundColor: "rgba(225,103,110,1)",
-              borderColor: "rgba(225,103,110,1)",
-              borderWidth: 1,
-              pointStyle: "crossRot",
-              data: this.stockPrice,
-              cubicInterpolationMode: "monotone",
-              fill: 'false'
-            },
-            {
-              label: "Holding Period",
-              backgroundColor: "rgba(10,225,10,0.3)",
-              borderColor: "rgba(225,103,110,1)",
-              borderWidth: 5,
-              pointStyle: "crossRot",
-              data: this.holdingPeriod,
-              cubicInterpolationMode: "monotone",
-            }
-          ]
-        },
-        options: {
-          color: [
-            'red',	// color for data at index 0
-            'blue',   // color for data at index 1
-            'green',  // color for data at index 2
-            'black',  // color for data at index 3
-          ]
-        }
-      });
-      console.log("myChart object: " + myChart)
+    ...mapActions([
+      'actionChartLoading'
+    ])
+  },
+  watch: {
+    chart_loading_state: function () {
+      if (this.isChartLoading)
+        this.$refs.myChart.showLoading()
+      else
+        this.$refs.myChart.hideLoading()
+    },
+    hp_update: function () {
+      const x = []
+      for (let i = 0; i < this.stockPrice.length; i++) {
+        x.push(i + 1)
+      }
+      this.chartOption.dataset.source = [
+        x,
+        this.stockPrice,
+        this.holdingPeriod
+      ]
+      this.actionChartLoading(false)
     }
   },
   data() {
-    return {}
+    return {
+      chartOption: {}
+    }
   },
   mounted() {
-    this.chartIt()
+    this.$refs.myChart.showLoading()
+    this.chartOption = {
+      dataset: {
+        xAxis: [1, 23, 4, 5, 6, 77, 8],
+        source: []
+      },
+      xAxis:
+          {
+            type: 'category',
+            boundaryGap:
+                false
+          }
+      ,
+      yAxis: {
+        type: 'value',
+        boundaryGap:
+            [0, '30%']
+      }
+      ,
+      series: [
+        {
+          type: 'line',
+          smooth: 0,
+          symbol: 'triangle',
+          symbolSize: 6,
+          lineStyle: {
+            width: 1.5
+          },
+          seriesLayoutBy: 'row'
+        },
+        {
+          type: 'line',
+          smooth: 0,
+          symbol: 'triangle',
+          symbolSize: 10,
+          lineStyle: {
+            width: 4
+          },
+          seriesLayoutBy: 'row'
+        }
+      ]
+    }
+    this.$refs.myChart.hideLoading()
   }
 }
 </script>
 
 <style scoped>
-#myChart {
-  max-width: 800px;
+.echarts {
+  width: 100%;
+  height: 400px;
 }
 </style>

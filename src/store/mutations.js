@@ -5,6 +5,7 @@ export const state = {
     profit: 0,
     stock_price: [0],
     holding_period: [0],
+    chartLoading: false
 }
 
 export const mutations = {
@@ -13,5 +14,8 @@ export const mutations = {
         state.profit = result['profit']
         state.stock_price = result['stock price']
         state.holding_period = result['holding period']
+    },
+    [types.CHART_LOADING](state, isLoading) {
+        state.chartLoading = isLoading
     }
 }

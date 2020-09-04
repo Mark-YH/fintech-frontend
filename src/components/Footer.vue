@@ -1,7 +1,7 @@
 <template>
   <footer class="fluid-container footer">
     <p class="float-right" id="back-to-top"><a href="#">Back to top</a></p>
-    <p>2009-2020 National Chi Nan University Lab 114 </p>
+    <p>2009-2020 Journal of Fat Cat</p>
   </footer>
 </template>
 

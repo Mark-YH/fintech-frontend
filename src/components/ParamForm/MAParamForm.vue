@@ -189,11 +189,13 @@ export default {
   },
   methods: {
     ...mapActions([
-      'actionCustomMA'
+      'actionCustomMA',
+      'actionChartLoading'
     ]),
     onSubmit(evt) {
       evt.preventDefault()
       this.actionCustomMA(this.form)
+      this.actionChartLoading(true)
     },
     onReset(evt) {
       evt.preventDefault()

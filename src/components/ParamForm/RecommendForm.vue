@@ -91,11 +91,13 @@ export default {
   },
   methods: {
     ...mapActions([
-      'actionRecommendMA'
+      'actionRecommendMA',
+      'actionChartLoading'
     ]),
     onSubmit(evt) {
       evt.preventDefault()
       this.actionRecommendMA(this.form)
+      this.actionChartLoading(true)
     }
     ,
     onReset(evt) {

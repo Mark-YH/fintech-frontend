@@ -11,6 +11,8 @@ import Intro from "@/pages/Intro"
 import Index from "@/pages/Index"
 import Recommendation from "@/pages/Recommendation"
 import store from './store'
+import vSelect from 'vue-select'
+import 'vue-select/dist/vue-select.css';
 
 Vue.config.productionTip = false
 
@@ -22,6 +24,7 @@ Vue.use(Vuex)
 Vue.use(VueRouter)
 
 Vue.component('vue-headful', vueHeadful);
+Vue.component('v-select', vSelect);
 
 const router = new VueRouter({
     mode: 'history',

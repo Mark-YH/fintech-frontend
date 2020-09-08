@@ -2,7 +2,7 @@
   <b-form @submit="onSubmit" @reset="onReset" v-if="show" id="MA-param-form">
     <b-form-row class="mb-2">
       <b-col cols="12">
-        <v-select :options="my_options" label="title">
+        <v-select :options="my_options" label="title" v-model="form.symbol">
           <template slot="option" slot-scope="option">
             <img :src="option.cardImage"/>
             {{ option.title }}

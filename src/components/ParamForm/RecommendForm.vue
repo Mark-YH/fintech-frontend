@@ -2,6 +2,16 @@
   <b-container fluid="lg">
     <b-form @submit="onSubmit" @reset="onReset" v-if="show" id="MA-param-form">
       <b-form-row class="mb-2">
+        <b-col cols="12">
+          <v-select :options="my_options" label="title" v-model="form.symbol">
+            <template slot="option" slot-scope="option">
+              <img :src="option.cardImage"/>
+              {{ option.title }}
+            </template>
+          </v-select>
+        </b-col>
+      </b-form-row>
+      <b-form-row class="mb-2">
         <b-col cols="6">
           訓練起始日期
         </b-col>
@@ -41,17 +51,29 @@
 
 <script>
 import {mapActions} from 'vuex'
+import axios from "axios";
 
 export default {
   name: "RecommendForm",
   data() {
     return {
       form: {
+        symbol: null,
         start: '', // first day of the training period
         end: '' // last day of the training period
       },
-      show: true
+      show: true,
+      my_options: []
     }
+  }, mounted() {
+    axios.get('http://127.0.0.1:8000/api/stock/list/').then((response) => {
+      // axios.get('https://fintech-114.herokuapp.com/api/stock/list/').then((response) => {
+      response.data['stock list'].forEach(it =>
+          this.my_options.push({title: it, cardImage: '../../assets/logo.png'})
+      )
+    }).catch(function (error) {
+      console.log(error);
+    })
   },
   computed: {
     date1State() {

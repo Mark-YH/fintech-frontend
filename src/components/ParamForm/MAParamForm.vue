@@ -189,8 +189,8 @@ export default {
     }
   },
   mounted() {
-    // axios.get('http://127.0.0.1:8000/api/stock/list/').then((response) => {
-      axios.get('https://fintech-114.herokuapp.com/api/stock/list/').then((response) => {
+    axios.get('http://127.0.0.1:8000/api/stock/list/').then((response) => {
+      // axios.get('https://fintech-114.herokuapp.com/api/stock/list/').then((response) => {
       response.data['stock list'].forEach(it =>
           this.my_options.push({title: it, cardImage: '../../assets/logo.png'})
       )

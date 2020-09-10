@@ -73,7 +73,7 @@ export default {
         type: 'value',
         boundaryGap:
             ['1%', '1%'],
-        scale:true
+        scale: true,
       }
       ,
       series: [
@@ -96,8 +96,14 @@ export default {
             width: 4
           },
           seriesLayoutBy: 'row',
+          areaStyle: {color: 'rgba(0,180,0,0.5)'}
         }
-      ]
+      ],
+      visualMap: {
+        type: 'piecewise',
+        show: false,
+        seriesIndex: 1,
+      },
     }
     this.$refs.myChart.hideLoading()
   }

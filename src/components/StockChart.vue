@@ -60,7 +60,6 @@ export default {
     this.$refs.myChart.showLoading()
     this.chartOption = {
       dataset: {
-        xAxis: [1, 23, 4, 5, 6, 77, 8],
         source: []
       },
       xAxis:
@@ -73,7 +72,8 @@ export default {
       yAxis: {
         type: 'value',
         boundaryGap:
-            [0, '30%']
+            ['1%', '1%'],
+        scale:true
       }
       ,
       series: [
@@ -81,7 +81,7 @@ export default {
           type: 'line',
           smooth: 0,
           symbol: 'triangle',
-          symbolSize: 6,
+          symbolSize: 8,
           lineStyle: {
             width: 1.5
           },
@@ -90,12 +90,12 @@ export default {
         {
           type: 'line',
           smooth: 0,
-          symbol: 'triangle',
+          symbol: 'none',
           symbolSize: 10,
           lineStyle: {
             width: 4
           },
-          seriesLayoutBy: 'row'
+          seriesLayoutBy: 'row',
         }
       ]
     }

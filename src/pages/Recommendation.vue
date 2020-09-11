@@ -1,16 +1,15 @@
 <template>
   <b-container fluid="auto">
     <b-row align-h="center" class="mt-2">
-      <b-col md="4">
+      <b-col md="4" align-self="center">
         <RecommendForm/>
-      </b-col>
-      <b-col md="2">
-        <StrategyResult/>
       </b-col>
       <b-col md="6">
         <StockChart/>
       </b-col>
     </b-row>
+    <hr>
+    <StrategyResult/>
   </b-container>
 </template>
 

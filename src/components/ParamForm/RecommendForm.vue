@@ -1,50 +1,46 @@
 <template>
   <b-container fluid="lg">
     <b-form @submit="onSubmit" @reset="onReset" v-if="show" id="MA-param-form">
-      <b-form-row class="mb-2">
-        <b-col cols="12">
-          <v-select :options="my_options" label="title" v-model="form.symbol">
+      <b-row class="mb-2">
+        <b-col cols="4">指定股票代碼：</b-col>
+        <b-col cols="8">
+          <v-select id="select-symbol" class="mb-2" :options="my_options" label="title" v-model="form.symbol"
+                    :aria-required="form.symbol===''">
             <template slot="option" slot-scope="option">
               <img :src="option.cardImage"/>
               {{ option.title }}
             </template>
           </v-select>
         </b-col>
-      </b-form-row>
-      <b-form-row class="mb-2">
-        <b-col cols="6">
-          訓練起始日期
+        <b-col cols="4">
+          訓練起始日期：
         </b-col>
-        <b-col cols="6">
-          訓練截止日期
-        </b-col>
-      </b-form-row>
-      <b-form-row>
-        <b-col cols="6">
-          <b-form-datepicker
+        <b-col cols="8">
+          <b-datepicker
               id="training_start"
               v-model="form.start"
               class="mb-2"
               :state="date1State"
-              required></b-form-datepicker>
+              required></b-datepicker>
         </b-col>
-        <b-col cols="6">
-          <b-form-datepicker
+        <b-col cols="4">
+          訓練截止日期：
+        </b-col>
+        <b-col cols="8">
+          <b-datepicker
               id="training_end"
               v-model="form.end"
               class="mb-2"
               :state="date2State"
-              required></b-form-datepicker>
+              required></b-datepicker>
         </b-col>
-      </b-form-row>
-      <b-form-row>
         <b-col cols="6">
-          <b-button class="mb-2" type="submit" variant="secondary">Recommend</b-button>
+          <b-button class="mb-2" type="submit" variant="primary">Submit</b-button>
         </b-col>
         <b-col cols="6">
           <b-button class="mb-2" type="reset" variant="danger">Reset</b-button>
         </b-col>
-      </b-form-row>
+      </b-row>
     </b-form>
   </b-container>
 </template>
@@ -68,8 +64,10 @@ export default {
   }, mounted() {
     axios.get('http://127.0.0.1:8000/api/stock/list/').then((response) => {
       // axios.get('https://fintech-114.herokuapp.com/api/stock/list/').then((response) => {
-      response.data['stock list'].forEach(it =>
-          this.my_options.push({title: it, cardImage: '../../assets/logo.png'})
+      response.data['stock list'].forEach(it => {
+            const img_path = '/img/company_logo/'
+            this.my_options.push({title: it, cardImage: img_path + it + '.png'})
+          }
       )
     }).catch(function (error) {
       console.log(error);

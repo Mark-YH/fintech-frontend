@@ -17,7 +17,11 @@ export default {
       stockPrice: 'getStockPrice',
       holdingPeriod: 'getHoldingPeriod',
       profit: 'getProfit',
-      isChartLoading: 'getChartLoading'
+      isChartLoading: 'getChartLoading',
+      ti1: 'getTI1',
+      ti2: 'getTI2',
+      ti3: 'getTI3',
+      ti4: 'getTI4',
     }),
     hp_update() {
       return this.holdingPeriod
@@ -46,7 +50,11 @@ export default {
       this.chartOption.dataset.source = [
         x,
         this.stockPrice,
-        this.holdingPeriod
+        this.holdingPeriod,
+        this.ti1,
+        this.ti2,
+        this.ti3,
+        this.ti4
       ]
       this.actionChartLoading(false)
     }
@@ -97,7 +105,47 @@ export default {
           },
           seriesLayoutBy: 'row',
           areaStyle: {color: 'rgba(0,180,0,0.5)'}
-        }
+        },
+        {
+          type: 'line',
+          smooth: 0,
+          symbol: 'none',
+          symbolSize: 8,
+          lineStyle: {
+            width: 1
+          },
+          seriesLayoutBy: 'row',
+        },
+        {
+          type: 'line',
+          smooth: 0,
+          symbol: 'none',
+          symbolSize: 8,
+          lineStyle: {
+            width: 1
+          },
+          seriesLayoutBy: 'row',
+        },
+        {
+          type: 'line',
+          smooth: 0,
+          symbol: 'none',
+          symbolSize: 8,
+          lineStyle: {
+            width: 1
+          },
+          seriesLayoutBy: 'row',
+        },
+        {
+          type: 'line',
+          smooth: 0,
+          symbol: 'none',
+          symbolSize: 8,
+          lineStyle: {
+            width: 1
+          },
+          seriesLayoutBy: 'row',
+        },
       ],
       visualMap: {
         type: 'piecewise',

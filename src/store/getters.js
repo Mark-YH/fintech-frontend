@@ -17,3 +17,19 @@ export const getStockPrice = state => {
 export const getChartLoading = state => {
     return state.chartLoading
 }
+
+export const getTI1 = state => {
+    return state.ti1
+}
+
+export const getTI2 = state => {
+    return state.ti2
+}
+
+export const getTI3 = state => {
+    return state.ti3
+}
+
+export const getTI4 = state => {
+    return state.ti4
+}

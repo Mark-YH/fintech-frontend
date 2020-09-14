@@ -1,9 +1,9 @@
 import * as types from './mutations_type.js'
 import axios from "axios";
+import {backendAddr} from "@/backend_address";
 
 export const actionCustomMA = ({commit}, form) => {
-    const url = 'http://127.0.0.1:8000/api/ma/custom/'
-    // const url = 'https://fintech-114.herokuapp.com/api/ma/custom/'
+    const url = backendAddr + '/api/ma/custom/'
 
     axios({
         url: url,
@@ -19,8 +19,7 @@ export const actionCustomMA = ({commit}, form) => {
 }
 
 export const actionRecommendMA = ({commit}, form) => {
-    const url = 'http://127.0.0.1:8000/api/ma/recommend/'
-    // const url = 'https://fintech-114.herokuapp.com/api/ma/recommend/'
+    const url = backendAddr + '/api/ma/recommend/'
 
     axios({
         url: url,

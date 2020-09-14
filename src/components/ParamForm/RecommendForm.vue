@@ -48,6 +48,7 @@
 <script>
 import {mapActions} from 'vuex'
 import axios from "axios";
+import {backendAddr} from "@/backend_address";
 
 export default {
   name: "RecommendForm",
@@ -62,8 +63,7 @@ export default {
       my_options: []
     }
   }, mounted() {
-    axios.get('http://127.0.0.1:8000/api/stock/list/').then((response) => {
-      // axios.get('https://fintech-114.herokuapp.com/api/stock/list/').then((response) => {
+    axios.get(backendAddr + '/api/stock/list/').then((response) => {
       response.data['stock list'].forEach(it => {
             const img_path = '/img/company_logo/'
             this.my_options.push({title: it, cardImage: img_path + it + '.png'})
@@ -116,8 +116,24 @@ export default {
     ]),
     onSubmit(evt) {
       evt.preventDefault()
-      this.actionRecommendMA(this.form)
-      this.actionChartLoading(true)
+      let isValid = true
+      if (this.form.symbol === null || this.form.symbol === '') {
+        console.log('symbol is empty')
+        isValid = false
+      }
+      if (this.form.start === '') {
+        console.log('starting date is empty')
+        isValid = false
+      }
+      if (this.form.end === '') {
+        console.log('ending date is empty')
+        isValid = false
+      }
+
+      if (isValid) {
+        this.actionRecommendMA(this.form)
+        this.actionChartLoading(true)
+      }
     }
     ,
     onReset(evt) {
